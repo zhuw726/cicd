@@ -38,7 +38,7 @@ pipeline{
               dir("cicd"){
               sh " ls -al"
                   script {
-                  deploy adapters: [tomcat9(credentialsId: 'tomcat_deployer', path: '', url: 'http://localhost:8888')], contextPath: '/', onFailure: false, war: 'webapp/target/*.war' 
+                  deploy adapters: [tomcat9(credentialsId: 'tomcat_deployer', url: 'http://localhost:8888/')], contextPath: '/', war: 'webapp/target/*.war' 
                 }
               }
             
