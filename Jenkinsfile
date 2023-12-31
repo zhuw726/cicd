@@ -37,10 +37,11 @@ pipeline{
           steps {
               dir("cicd"){
               sh " ls -al"
+                  script {
+                  deploy adapters: [tomcat9(credentialsId: 'tomcat_deployer', path: '', url: 'http://localhost:8888')], contextPath: '/pipeline', onFailure: false, war: 'webapp/target/*.war' 
+                }
               }
-            script {
-              deploy adapters: [tomcat9(credentialsId: 'tomcat_deployer', path: '', url: 'http://localhost:8888')], contextPath: '/pipeline', onFailure: false, war: 'webapp/target/*.war' 
-            }
+            
           }
         }
 
