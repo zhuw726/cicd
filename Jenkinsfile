@@ -38,10 +38,10 @@ pipeline{
         HOME = "${env.WORKSPACE}"
         }
            steps{
-        //     script {
-        //             def dockerHome = tool 'docker'
-        //             env.PATH = "${dockerHome}/bin:${env.PATH}"
-        //     }
+            script {
+                    def dockerHome = tool 'docker'
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
+            }
                dir("cicd"){
                     // sh " def dockerHome = tool 'docker'"
                     // sh " env.PATH = '${dockerHome}/bin:${env.PATH}'"
