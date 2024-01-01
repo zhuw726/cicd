@@ -1,7 +1,5 @@
 docker network create jenkins
 
- --group-add $(stat -c '%g' /var/run/docker.sock) \
- 
 docker run -d --privileged \
  -v /var/run/docker.sock:/var/run/docker.sock \
  -v /usr/local/bin/docker:/usr/local/bin/docker \
@@ -11,8 +9,14 @@ docker run -d --privileged \
  jenkins/jenkins:lts-jdk17
 
 
- $ docker run --rm -ti --group-add $(stat -c '%g' /var/run/docker.sock) -v /var/run/docker.sock:/var/run/docker.sock <your-image>
- 
+docker run -d --privileged \
+ --name jenkins -v /Users/wenjianzhu/Documents/workspace/jenkins/jenkins_home:/var/jenkins_home \
+ -p 8080:8080 -p 50000:50000 \
+ --restart=on-failure \
+ jenkins/jenkins:lts-jdk17
+
+
+
  docker run -d -p 8081:8080 -p 50001:50000 \
  -v /Users/wenjianzhu/Documents/workspace/jenkins/jenkins_home1:/var/jenkins_home jenkins/jenkins
 
