@@ -34,9 +34,6 @@ pipeline{
             }
         }
        stage("build & push docker hub"){
-            agent {
-    label 'docker'
-  }
            steps{
             script {
                     def dockerHome = tool 'docker'
