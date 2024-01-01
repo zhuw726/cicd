@@ -45,6 +45,7 @@ pipeline{
                dir("cicd"){
                     // sh " def dockerHome = tool 'docker'"
                     // sh " env.PATH = '${dockerHome}/bin:${env.PATH}'"
+                    sh "sudo systemctl start docker"
                     sh "ls -al"
                     sh "docker build . -t sample:latest"
                     sh "docker tag sample:latest zhuwj726/tc:latest"
