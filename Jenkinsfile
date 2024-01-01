@@ -2,7 +2,7 @@ pipeline{
     agent any
     tools { 
         maven 'maven' 
-        // docker 'docker' 
+        docker 'docker' 
     }
     stages{
         stage("Clean up"){
@@ -35,10 +35,10 @@ pipeline{
             }
         }
        stage("build & push docker hub"){
+            // agent {
+            //     docker { image 'maven:3.9.6-eclipse-temurin-17-alpine' }
+            // }
            steps{
-            agent {
-                docker { image 'maven:3.9.6-eclipse-temurin-17-alpine' }
-            }
                dir("cicd"){
                     sh " ls -al"
                     sh " docker build . sample:latest"
