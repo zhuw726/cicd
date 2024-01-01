@@ -2,7 +2,6 @@ pipeline{
     agent any
     tools { 
         maven 'maven' 
-        docker 'docker' 
     }
     stages{
         stage("Clean up"){
@@ -40,6 +39,8 @@ pipeline{
             // }
            steps{
                dir("cicd"){
+                    sh " def dockerHome = tool 'docker'"
+                    sh " env.PATH = '${dockerHome}/bin:${env.PATH}'"
                     sh " ls -al"
                     sh " docker build . sample:latest"
                     sh "docker tag sample:latest zhuwj726/tc:latest"
