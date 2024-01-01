@@ -34,6 +34,9 @@ pipeline{
             }
         }
        stage("build & push docker hub"){
+        environment {
+        HOME = "${env.WORKSPACE}"
+        }
            steps{
             script {
                     def dockerHome = tool 'docker'
