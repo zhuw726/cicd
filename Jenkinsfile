@@ -38,9 +38,12 @@ pipeline{
             //     docker { image 'maven:3.9.6-eclipse-temurin-17-alpine' }
             // }
            steps{
-            script {
-                    def dockerHome = tool 'docker'
-                    env.PATH = "${dockerHome}/bin:${env.PATH}"
+            // script {
+            //         def dockerHome = tool 'docker'
+            //         env.PATH = "${dockerHome}/bin:${env.PATH}"
+            // }
+            agent {
+                docker { image 'docker:24.0.5' }
             }
                dir("cicd"){
                     // sh " def dockerHome = tool 'docker'"
