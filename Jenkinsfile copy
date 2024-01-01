@@ -1,0 +1,23 @@
+pipeline{
+    agent any
+    tools { 
+        maven 'maven' 
+    }
+    stages{
+       stage("build & push docker hub"){
+           steps{
+            script {
+                    def dockerHome = tool 'docker'
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
+            }
+               dir("cicd"){
+                    // sh " def dockerHome = tool 'docker'"
+                    // sh " env.PATH = '${dockerHome}/bin:${env.PATH}'"
+                    sh "ls -al"
+                    sh "docker "
+                }
+           }
+       }
+
+    }
+}

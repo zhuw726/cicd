@@ -1,0 +1,15 @@
+docker network create jenkins
+docker run -d --name jenkins -v /Users/wenjianzhu/Documents/workspace/jenkins/jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --restart=on-failure jenkins/jenkins:lts-jdk17
+
+
+docker run \
+  --name jenkins-docker \
+  --rm \
+  --detach \
+  --privileged \
+  --network jenkins \
+  --network-alias docker \
+  --volume /Users/wenjianzhu/Documents/workspace/jenkins/jenkins_home:/var/jenkins_home \
+  --publish 2376:2376 \
+  docker:dind \
+  --storage-driver overlay2
