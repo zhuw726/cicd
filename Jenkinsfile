@@ -33,17 +33,13 @@ pipeline{
                 }
             }
         }
-        stage ('Deploy') {
-          steps {
-              dir("cicd"){
-              sh " ls -al"
-                  script {
-                  deploy adapters: [tomcat9(credentialsId: 'tomcat_deployer', url: 'http://localhost:8888/')], contextPath: '/', war: 'webapp/target/*.war' 
+       stage("build & push docker hub"){
+           steps{
+               dir("cicd"){
+                    sh " ls -al"
                 }
-              }
-            
-          }
-        }
+           }
+       }
 
     }
 }
