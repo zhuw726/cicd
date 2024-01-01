@@ -35,11 +35,8 @@ pipeline{
         }
        stage("build & push docker hub"){
             agent {
-                docker {
-                    label 'docker'
-                    image 'python:3.7'
-                }
-            }
+    label 'docker'
+  }
            steps{
             script {
                     def dockerHome = tool 'docker'
