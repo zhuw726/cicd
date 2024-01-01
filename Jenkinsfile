@@ -37,6 +37,7 @@ pipeline{
            steps{
                dir("cicd"){
                     sh " ls -al"
+                    sh " ls -al"
                 }
            }
        }
