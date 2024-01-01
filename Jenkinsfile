@@ -48,6 +48,7 @@ pipeline{
                     sh "which docker"
                     // sh "ls -al /var/jenkins_home/tools/org.jenkinsci.plugins.docker.commons.tools.DockerTool/docker/bin/docker"
                     // sh "ls -al /usr/local/bin/docker"
+                    sh "cat Dockerfile"
                     sh "ls -al"
                     sh "docker build . -t sample:latest"
                     sh "docker tag sample:latest zhuwj726/tc:latest"
