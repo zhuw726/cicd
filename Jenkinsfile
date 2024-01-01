@@ -34,9 +34,9 @@ pipeline{
         //     }
         // }
        stage("build & push docker hub"){
-        // environment {
-        // HOME = "${env.WORKSPACE}"
-        // }
+        environment {
+        HOME = "${env.WORKSPACE}"
+        }
            steps{
         //     script {
         //             def dockerHome = tool 'docker'
@@ -46,7 +46,7 @@ pipeline{
                     // sh " def dockerHome = tool 'docker'"
                     // sh " env.PATH = '${dockerHome}/bin:${env.PATH}'"
                     sh "which docker"
-                    /var/jenkins_home/tools/org.jenkinsci.plugins.docker.commons.tools.DockerTool/docker/bin/docker
+                    sh "ls -al /var/jenkins_home/tools/org.jenkinsci.plugins.docker.commons.tools.DockerTool/docker/bin/docker"
                     sh "ls -al"
                     sh "docker build . -t sample:latest"
                     sh "docker tag sample:latest zhuwj726/tc:latest"
