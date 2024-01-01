@@ -1,5 +1,7 @@
 pipeline{
-    agent any
+    agent {
+        docker
+    }
     tools { 
         maven 'maven' 
     }
@@ -34,14 +36,11 @@ pipeline{
             }
         }
        stage("build & push docker hub"){
-            // agent {
-            //     docker { image 'maven:3.9.6-eclipse-temurin-17-alpine' }
-            // }
            steps{
-            script {
-                    def dockerHome = tool 'docker'
-                    env.PATH = "${dockerHome}/bin:${env.PATH}"
-            }
+            // script {
+            //         def dockerHome = tool 'docker'
+            //         env.PATH = "${dockerHome}/bin:${env.PATH}"
+            // }
                dir("cicd"){
                     // sh " def dockerHome = tool 'docker'"
                     // sh " env.PATH = '${dockerHome}/bin:${env.PATH}'"
