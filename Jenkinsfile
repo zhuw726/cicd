@@ -37,7 +37,7 @@ pipeline{
         // environment {
         // HOME = "${env.WORKSPACE}"
         // }
-        //    steps{
+           steps{
         //     script {
         //             def dockerHome = tool 'docker'
         //             env.PATH = "${dockerHome}/bin:${env.PATH}"
