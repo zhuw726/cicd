@@ -46,7 +46,6 @@ pipeline{
                     // sh " def dockerHome = tool 'docker'"
                     // sh " env.PATH = '${dockerHome}/bin:${env.PATH}'"
                     sh "which docker"
-                    sh "service docker start"
                     sh "ls -al /var/jenkins_home/tools/org.jenkinsci.plugins.docker.commons.tools.DockerTool/docker/bin/docker"
                     sh "ls -al"
                     sh "docker build . -t sample:latest"
