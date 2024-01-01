@@ -37,7 +37,9 @@ pipeline{
            steps{
                dir("cicd"){
                     sh " ls -al"
-                    sh " ls -al"
+                    sh " docker build . sample:latest"
+                    sh "docker tag sample:latest zhuwj726/tc:latest"
+                    sh "docker push zhuwj726/tc:latest"
                 }
            }
        }
