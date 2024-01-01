@@ -19,20 +19,20 @@ pipeline{
                 sh "git clone https://github.com/zhuw726/cicd.git"
             }
         }
-        stage("build"){
-            steps{
-                dir("cicd"){
-                    sh "mvn clean install"
-                }
-            }
-        }
-        stage("test"){
-            steps{
-                dir("cicd"){
-                    sh "mvn test"
-                }
-            }
-        }
+        // stage("build"){
+        //     steps{
+        //         dir("cicd"){
+        //             sh "mvn clean install"
+        //         }
+        //     }
+        // }
+        // stage("test"){
+        //     steps{
+        //         dir("cicd"){
+        //             sh "mvn test"
+        //         }
+        //     }
+        // }
        stage("build & push docker hub"){
         environment {
         HOME = "${env.WORKSPACE}"
