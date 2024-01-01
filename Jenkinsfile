@@ -1,16 +1,16 @@
 pipeline{
     agent any
-    tools { 
-        maven 'maven' 
-    }
+    // tools { 
+    //     maven 'maven' 
+    // }
     stages{
         stage("Clean up"){
             steps{
-                 sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                    mvn -version
-                ''' 
+                //  sh '''
+                //     echo "PATH = ${PATH}"
+                //     echo "M2_HOME = ${M2_HOME}"
+                //     mvn -version
+                // ''' 
                 deleteDir()
             }
         }
