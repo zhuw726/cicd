@@ -9,11 +9,22 @@ docker run -d --privileged \
  jenkins/jenkins:lts-jdk17
 
 
-docker run -d --privileged \
- --name jenkins -v /Users/wenjianzhu/Documents/workspace/jenkins/jenkins_home:/var/jenkins_home \
- -p 8081:8080 -p 50001:50000 \
- --restart=on-failure \
- jenkins/jenkins:lts-jdk17
+
+docker run \
+  --name jenkins-blueocean \
+  --restart=on-failure \
+  --detach \
+  --network jenkins \
+  --env DOCKER_HOST=tcp://docker:2376 \
+  --env DOCKER_CERT_PATH=/certs/client \
+  --env DOCKER_TLS_VERIFY=1 \
+  --publish 8082:8080 \
+  --publish 50002:50000 \
+  --volume /Users/wenjianzhu/Documents/workspace/jenkins/jenkins_home:/var/jenkins_home \
+  --volume jenkins-docker-certs:/certs/client:ro \
+  myjenkins-blueocean:2.426.2-1 
+
+
 
 
 
